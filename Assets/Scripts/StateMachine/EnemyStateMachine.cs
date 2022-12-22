@@ -10,13 +10,14 @@ public class EnemyStateMachine : MonoBehaviour
 
     private Player _player;
     private NavMeshAgent _navMeshAgent;
+    protected Animator _animator;
     private State _currentState;
 
     private void Start()
     {
         _player = GetComponent<Enemy>().Target;
         _navMeshAgent = GetComponent<Enemy>().NavMeshAgent;
-
+        _animator = GetComponent<Enemy>().Animator;
         Reset(_startState);
     }
 
@@ -25,21 +26,18 @@ public class EnemyStateMachine : MonoBehaviour
         if (_currentState == null)
             return;
 
-        State nextState = _currentState.GetNextState();
+        var nextState = _currentState.GetNextState();
 
-        if (_currentState != null)
+        if (nextState != null)
             Transite(nextState);
     }
 
     private void Reset(State startState)
     {
         _currentState = startState;
-
-        Debug.Log(_currentState.name + "!!!!!!");
-
         if (_currentState != null)
         {
-            _currentState.Enter(_player, _navMeshAgent);
+            _currentState.Enter(_player, _navMeshAgent,_animator);
         }
     }
 
@@ -51,6 +49,6 @@ public class EnemyStateMachine : MonoBehaviour
         _currentState = nextState;
 
         if (_currentState != null)
-            _currentState.Enter(_player,_navMeshAgent);
+            _currentState.Enter(_player,_navMeshAgent,_animator);
     }
 }

@@ -2497,6 +2497,7 @@ GameObject:
   - component: {fileID: 7220241873097944745}
   - component: {fileID: 9158220997598007395}
   - component: {fileID: 2262009913966158977}
+  - component: {fileID: -845887083716532638}
   - component: {fileID: 5770428784183478295}
   m_Layer: 6
   m_Name: Stickman_sphere_Police (26)
@@ -2615,6 +2616,7 @@ MonoBehaviour:
   Speed: 5
   _target: {fileID: 0}
   _navMeshAgent: {fileID: 5770428784183478295}
+  _animator: {fileID: 0}
 --- !u!114 &9097226549698604134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2671,7 +2673,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd9b3225bd28a34c8be2fa6773f3bcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transitions: []
+  _transitions:
+  - {fileID: -845887083716532638}
+--- !u!114 &-845887083716532638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1179261409172621865}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7371b5a2fb6d398458cbb74e6d0d6615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nextState: {fileID: 7220241873097944745}
+  _searchMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!195 &5770428784183478295
 NavMeshAgent:
   m_ObjectHideFlags: 0

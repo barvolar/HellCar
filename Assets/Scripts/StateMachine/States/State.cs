@@ -9,16 +9,17 @@ public abstract class State : MonoBehaviour
 
     protected Player Target;
     protected NavMeshAgent NavMeshAgent;
+    protected Animator Animator;
+    protected string _currentStateTriggerName;
 
-    public void Enter(Player target, NavMeshAgent agent)
+    public void Enter(Player target, NavMeshAgent agent,Animator animator)
     {
         if (enabled == false)
         {
-            enabled = true;
-            Debug.Log(enabled);
             Target = target;
             NavMeshAgent = agent;
-
+            Animator = animator;
+            enabled = true;
             foreach (var transition in _transitions)
             {
                 transition.enabled = true;
@@ -34,6 +35,7 @@ public abstract class State : MonoBehaviour
             if (transition.NeedTransite)
                 return transition.NextState;
         }
+
         return null;
     }
 

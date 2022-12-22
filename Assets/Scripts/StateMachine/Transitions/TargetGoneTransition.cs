@@ -2,24 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TargetFoundTransition : Transition
+public class TargetGoneTransition : Transition
 {
     [SerializeField] private LayerMask _searchMask;
     [SerializeField] private float _searchRadius;
 
     private Collider[] _collisions;
-    private float _minRadius = 1.5f;
-    private float _maxRadius = 0.5f;
 
     private void Update()
     {
         _collisions = Physics.OverlapSphere(transform.position, _searchRadius, _searchMask);
-        foreach (var collision in _collisions)
+        if (_collisions.Length == 0)
         {
-            if (collision.TryGetComponent(out Body body))
-            {
-                NeedTransite = true;
-            }
+            NeedTransite = true;
         }
     }
 }
