@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyRagdol : MonoBehaviour
 {
     [SerializeField] Rigidbody[] _allRigidbody;
-    [SerializeField] Collider _myCollider;
+   // [SerializeField] Collider _myCollider;
 
     private void Awake()
     {
@@ -17,7 +17,7 @@ public class EnemyRagdol : MonoBehaviour
 
     public void Enable()
     {
-        _myCollider.isTrigger = true;
+       // _myCollider.isTrigger = true;
         for (int i = 0; i < _allRigidbody.Length; i++)
         {
             _allRigidbody[i].isKinematic = false;

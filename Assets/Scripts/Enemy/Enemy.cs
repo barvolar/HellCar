@@ -4,9 +4,8 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public abstract class Enemy : MonoBehaviour
-{
-    [SerializeField] protected float Speed;
-    
+{  
+    protected float Speed;
     protected int Health;
     protected int Money;
     protected int Damage;
@@ -22,13 +21,5 @@ public abstract class Enemy : MonoBehaviour
         Target = target;
         Animator = animator;
         IsDie = false;
-    }
-    protected  void Locomotion() { }
-
-    protected  void AttackTarget() { }
-
-    protected  void ProcessValue() { }
-
-    public  void Die() { }
-    
+    }   
 }

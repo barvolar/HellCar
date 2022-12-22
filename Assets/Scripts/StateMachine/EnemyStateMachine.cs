@@ -10,8 +10,8 @@ public class EnemyStateMachine : MonoBehaviour
 
     private Player _player;
     private NavMeshAgent _navMeshAgent;
-    protected Animator _animator;
     private State _currentState;
+    private Animator _animator;
 
     private void Start()
     {

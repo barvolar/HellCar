@@ -6,7 +6,10 @@ using UnityEngine.AI;
 public abstract class Transition : MonoBehaviour
 {
     [SerializeField] private State _nextState;
+    [SerializeField] protected LayerMask SearchMask;
+    [SerializeField] protected float SearchRadius;
 
+    protected Collider[] Collisions;
     protected Player Target { get; private set; }
     protected NavMeshAgent NavMeshAgent { get; private set; }
 

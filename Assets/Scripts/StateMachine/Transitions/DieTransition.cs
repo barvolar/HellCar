@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TargetFoundTransition : Transition
+public class DieTransition : Transition
 {
     private void Update()
     {
