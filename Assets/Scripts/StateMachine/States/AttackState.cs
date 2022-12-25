@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Enemy))]
 public class AttackState : State
 {
+    [SerializeField] private LayerMask _targetLayerMask;
+
     private string _attackBoolName = "IsAttack";
+    private float _attackRange = 2.5f;
 
     private void Start()
     {
@@ -32,6 +36,12 @@ public class AttackState : State
 
     public void Attack()
     {
-        Debug.Log("Атакую - " + Target.name);
+        Collider[] hits = Physics.OverlapSphere(transform.position, _attackRange, _targetLayerMask);
+
+        foreach(var hit in hits)
+        {
+            if (hit.TryGetComponent(out Body body))
+                Target.TakeDamage(GetComponent<Enemy>().Damage);
+        }
     }
 }

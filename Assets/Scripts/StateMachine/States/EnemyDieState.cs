@@ -6,15 +6,29 @@ using UnityEngine;
 public class EnemyDieState : State
 {
     private EnemyRagdol _ragdol;
+    private float _lifeTime = 0;
+    private float _maxLifeTime = 3f;
 
     private void OnEnable()
     {
         Process();
+        Target.AddMoney(GetComponent<Enemy>().Money);
     }
 
     private void Start()
     {
         Process();
+    }
+
+    private void Update()
+    {
+        if (_ragdol.enabled == false)
+            return;
+
+        _lifeTime += Time.deltaTime;
+
+        if (_lifeTime >= _maxLifeTime)
+            gameObject.SetActive(false);
     }
 
     private void Process()

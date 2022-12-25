@@ -2504,6 +2504,7 @@ GameObject:
   - component: {fileID: 1179261409172621868}
   - component: {fileID: 5770428784183478295}
   - component: {fileID: 1179261409172621870}
+  - component: {fileID: 9109314731859374135}
   - component: {fileID: 1179261409172621871}
   - component: {fileID: 8698136124257788827}
   - component: {fileID: 1045016798644720378}
@@ -2596,11 +2597,27 @@ CapsuleCollider:
   m_GameObject: {fileID: 1179261409172621865}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 0.8186307
   m_Height: 2.0084813
   m_Direction: 1
   m_Center: {x: 0.0058670044, y: 0.9805871, z: 0.0021455884}
+--- !u!54 &9109314731859374135
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1179261409172621865}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!114 &1179261409172621871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2649,6 +2666,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6b30ac2ef0f9204aa32a3f395298ab6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _triggerHandler: {fileID: 8698136124257788827}
+  _money: 1
+  _damage: 2
+  Health: 20
   _navMeshAgent: {fileID: 5770428784183478295}
   _animator: {fileID: 1179261409172621868}
   _searchMask:
@@ -2714,6 +2735,9 @@ MonoBehaviour:
   _transitions:
   - {fileID: -845887083716532638}
   - {fileID: 8885203550545687753}
+  _targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &-845887083716532638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2761,6 +2785,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   SearchRadius: 1
+  _enemy: {fileID: 1045016798644720378}
 --- !u!1 &1179261409194798357
 GameObject:
   m_ObjectHideFlags: 0

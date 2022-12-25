@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class DieTransition : Transition
 {
+   [SerializeField] private Enemy _enemy;
+
+    private void OnEnable()
+    {
+        _enemy.Died += OnDied;
+    }
+
+    private void OnDisable()
+    {
+        _enemy.Died -= OnDied;
+    }
+
     private void Update()
     {
         Collisions = Physics.OverlapSphere(transform.position, SearchRadius, SearchMask);
@@ -14,5 +26,10 @@ public class DieTransition : Transition
                 NeedTransite = true;
             }
         }
+    }
+
+    private void OnDied()
+    {
+        NeedTransite = true;
     }
 }
