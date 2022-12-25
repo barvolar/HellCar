@@ -5,7 +5,6 @@ using UnityEngine.Events;
 
 public class Turret : MonoBehaviour
 {
-    private Transform _target;
     [SerializeField] private Transform _body;
     [SerializeField] private Transform _gun;
     [SerializeField] private float _rotationSpeed;
