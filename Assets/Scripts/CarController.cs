@@ -8,15 +8,15 @@ public class CarController : MonoBehaviour
     [SerializeField] private float _breakSpeed;
     [SerializeField] private float _speed;
 
-    [SerializeField] private Transform _transfromWheelFR;
     [SerializeField] private Transform _transfromWheelFL;
-    [SerializeField] private Transform _transfromWheelBR;
+    [SerializeField] private Transform _transfromWheelFR;
     [SerializeField] private Transform _transfromWheelBL;
+    [SerializeField] private Transform _transfromWheelBR;
 
-    [SerializeField] private WheelCollider _wheelFR;
     [SerializeField] private WheelCollider _wheelFL;
-    [SerializeField] private WheelCollider _wheelBR;
-    [SerializeField] private WheelCollider _wheelBL;
+    [SerializeField] private WheelCollider _wheelFR;
+    // [SerializeField] private WheelCollider _wheelBL;
+    // [SerializeField] private WheelCollider _wheelBR;
 
     private float _velocity;
     private Vector3 _direction;
@@ -43,24 +43,24 @@ public class CarController : MonoBehaviour
         Quaternion targetRotation = Quaternion.LookRotation(_direction);
         if (_direction == Vector3.zero)
             targetRotation = transform.rotation;
-      
+
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _rotationDelta * Time.deltaTime);
     }
 
     private void Move()
     {
-        _wheelBL.motorTorque = _velocity * _speed;
-        _wheelBR.motorTorque = _velocity * _speed;
+        _wheelFL.motorTorque = _velocity * _speed;
+        _wheelFR.motorTorque = _velocity * _speed;
 
-        if (_direction == Vector3.zero || _wheelBL.rpm >= 1000f)
+        if (_direction == Vector3.zero || _wheelFL.rpm >= 1000f)
         {
-            _wheelBL.brakeTorque = _breakSpeed;
-            _wheelBR.brakeTorque = _breakSpeed;
+            _wheelFL.brakeTorque = _breakSpeed;
+            _wheelFR.brakeTorque = _breakSpeed;
         }
         else
         {
-            _wheelBL.brakeTorque = 0;
-            _wheelBR.brakeTorque = 0;
+            _wheelFL.brakeTorque = 0;
+            _wheelFR.brakeTorque = 0;
         }
     }
 }

@@ -15,11 +15,15 @@ public abstract class Enemy : MonoBehaviour
     public Player Target { get; protected set; }
     public Animator Animator { get; protected set; }
 
-    protected void Init(Player target,NavMeshAgent agent,Animator animator)
+    protected void Init(NavMeshAgent agent,Animator animator)
     {
         NavMeshAgent = agent;
-        Target = target;
         Animator = animator;
         IsDie = false;
-    }   
+    }  
+    
+    public void SetTarget(Player target)
+    {
+        Target = target;
+    }
 }

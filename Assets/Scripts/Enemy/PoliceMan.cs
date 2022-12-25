@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class PoliceMan : Enemy
 {
-    [SerializeField] private Player _target;
     [SerializeField] private NavMeshAgent _navMeshAgent;
     [SerializeField] private Animator _animator;
     [SerializeField] private LayerMask _searchMask;
@@ -15,6 +14,6 @@ public class PoliceMan : Enemy
     private void Awake()
     {
         Ragdol = GetComponent<EnemyRagdol>();
-        Init(_target, _navMeshAgent, _animator);
+        Init(_navMeshAgent, _animator);
     }
 }
