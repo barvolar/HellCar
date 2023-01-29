@@ -9608,9 +9608,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 7821160645804368573}
   _container: {fileID: 1936415302}
-  _copacity: 60
-  _templates:
-  - {fileID: 1045016798644720378, guid: f2baea9b9c9d4fc469be5c84f43ee386, type: 3}
+  _copacity: 300
+  _waves:
+  - _templates:
+    - _template: {fileID: 1045016798644720378, guid: f2baea9b9c9d4fc469be5c84f43ee386, type: 3}
+      _count: 20
+    _delay: 1
+  - _templates:
+    - _template: {fileID: 1045016798644720378, guid: f2baea9b9c9d4fc469be5c84f43ee386, type: 3}
+      _count: 40
+    _delay: 1
+  - _templates:
+    - _template: {fileID: 1045016798644720378, guid: f2baea9b9c9d4fc469be5c84f43ee386, type: 3}
+      _count: 50
+    _delay: 0.5
+  - _templates:
+    - _template: {fileID: 1045016798644720378, guid: f2baea9b9c9d4fc469be5c84f43ee386, type: 3}
+      _count: 70
+    _delay: 0.5
+  - _templates:
+    - _template: {fileID: 1045016798644720378, guid: f2baea9b9c9d4fc469be5c84f43ee386, type: 3}
+      _count: 100
+    _delay: 0.5
   _spawnPoints:
   - {fileID: 1391516807}
   - {fileID: 1013849545}
@@ -9621,7 +9640,6 @@ MonoBehaviour:
   - {fileID: 1684240961}
   - {fileID: 540705099}
   _target: {fileID: 7821160645804368573}
-  _timeBetweenSpawn: 1
 --- !u!4 &1936415304
 Transform:
   m_ObjectHideFlags: 0

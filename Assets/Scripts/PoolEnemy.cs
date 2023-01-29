@@ -10,20 +10,39 @@ public class PoolEnemy : MonoBehaviour
 
     private List<Enemy> _pool = new List<Enemy>();
 
-    protected void Initialization(Enemy[] enemyTemplates, Player target)
-    {
-        for (int i = 0; i < enemyTemplates.Length; i++)
-        {
-            for (int j = 0; j < _copacity; j++)
-            {
-                Enemy spawnedEnemy = Instantiate(enemyTemplates[i], _container.transform);
+    //protected void Initialization(Enemy[] enemyTemplates, Player target)
+    //{
+    //    for (int i = 0; i < enemyTemplates.Length; i++)
+    //    {
+    //        for (int j = 0; j < _copacity; j++)
+    //        {
+    //            Enemy spawnedEnemy = Instantiate(enemyTemplates[i], _container.transform);
 
-                if (spawnedEnemy.TryGetComponent(out Enemy enemy))
+    //            if (spawnedEnemy.TryGetComponent(out Enemy enemy))
+    //                enemy.SetTarget(target);
+
+    //            spawnedEnemy.gameObject.SetActive(false);
+
+    //            _pool.Add(spawnedEnemy);
+    //        }
+    //    }
+    //}
+
+    protected void Initialization(Wave[] _waves, Player target)
+    {
+        foreach (var wave in _waves)
+        {
+            foreach (var spawnUnit in wave.SpawnUnits)
+            {
+                Enemy spawned = Instantiate(spawnUnit.Template, _container.transform);
+
+                if (spawned.TryGetComponent(out Enemy enemy))
                     enemy.SetTarget(target);
 
-                spawnedEnemy.gameObject.SetActive(false);
-
-                _pool.Add(spawnedEnemy);
+                for (int i = 0; i < spawnUnit.Count; i++)
+                {
+                    _pool.Add(spawned);
+                }
             }
         }
     }
@@ -31,7 +50,7 @@ public class PoolEnemy : MonoBehaviour
     protected bool TryGetRandomObject(out Enemy resul)
     {
         resul = _pool[Random.Range(0, _pool.Count)];
-        
+
         if (resul.gameObject.activeSelf == false)
             return resul != null;
         else
